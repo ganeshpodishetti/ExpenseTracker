@@ -1,4 +1,15 @@
+using ExpenseTracker.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Adding SyncFusion Key
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ccHVWR2ldVEdxWkU=");
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+// Database
+builder.Services.AddDbContext<AppDbContext>(options => options
+    .UseNpgsql(builder.Configuration.GetConnectionString("DevConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +33,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();
