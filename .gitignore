@@ -2,7 +2,7 @@
 bin
 obj
 appsettings.json
-appsettings.Development.json.json
+appsettings.Development.json
 
 .idea### VisualStudioCode template
 .vscode/*
