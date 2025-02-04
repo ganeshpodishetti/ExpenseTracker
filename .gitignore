@@ -6,6 +6,12 @@
 # dotenv files
 .env
 
+.vscode
+bin
+bin/Debug/net8.0
+appsettings.Development.json
+appsettings.json
+
 # User-specific files
 *.rsuser
 *.suo
