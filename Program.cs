@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Adding SyncFusion Key
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ccHVWR2ldVEdxWkU=");
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(builder.Configuration.GetValue<string>("SyncFusionKey"));
+//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Database
 builder.Services.AddDbContext<AppDbContext>(options => options
-    .UseNpgsql(builder.Configuration.GetConnectionString("DevConnection")));
+    .UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
